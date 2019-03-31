@@ -1,10 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
 project (CoreFramework)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
-
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/CoreFrameworkLib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_subdirectory(libraries/glfw EXCLUDE_FROM_ALL)
 add_subdirectory(libraries/glew EXCLUDE_FROM_ALL)
@@ -30,19 +28,6 @@ macro(GroupSources curdir)
     endif()
 endmacro()
 
-# Generate build information
-include(GetGitRevisionDescription)
-
-function(get_timestamp _var)
-    string(TIMESTAMP timestamp UTC)
-    set(${_var} "${timestamp}" PARENT_SCOPE)
-endfunction()
-
-get_git_head_revision(GIT_REF_SPEC GIT_REV)
-git_describe(GIT_DESC --always --long --dirty)
-git_branch_name(GIT_BRANCH)
-get_timestamp(BUILD_DATE)
-
 include_directories("src")
 include_directories("src/utils")
 include_directories("src/math")
@@ -51,8 +36,8 @@ include_directories("src/graphics/buffers")
 include_directories("src/input")
 include_directories("libraries/stb")
 
-file(GLOB_RECURSE SOURCE_FILES *.cpp utils/*.cpp math/*.cpp graphics/*.cpp graphics/buffers/*.cpp input/*.cpp)
-file(GLOB_RECURSE HEADER_FILES *.h utils/*.h math/*.h graphics/*.h graphics/buffers/*.h input/*.h)
+file(GLOB_RECURSE SOURCE_FILES src/*.cpp src/utils/*.cpp src/math/*.cpp src/graphics/*.cpp src/graphics/buffers/*.cpp src/input/*.cpp)
+file(GLOB_RECURSE HEADER_FILES src/*.h src/utils/*.h src/math/*.h src/graphics/*.h src/graphics/buffers/*.h src/input/*.h)
 
 GroupSources(src)
 
