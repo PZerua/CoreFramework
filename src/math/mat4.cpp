@@ -1,9 +1,7 @@
 /**
-* (c) 2017 Pablo Luis García. All rights reserved.
+* (c) 2017 Pablo Luis Garcï¿½a. All rights reserved.
 * Released under MIT license. Read LICENSE for more details.
 */
-
-#pragma once
 
 #include "mat4.h"
 
@@ -34,8 +32,8 @@ void mat4::scale(const vec3 &value)
     *this *= S;
 }
 
-mat4 operator+(const mat4 &left, const mat4 &right) 
-{ 
+mat4 operator+(const mat4 &left, const mat4 &right)
+{
     mat4 sum;
 
     for (unsigned i = 0; i < 16; i++)
@@ -84,8 +82,8 @@ mat4 operator*=(mat4 &left, const mat4 &right)
     return left;
 }
 
-std::ostream& operator<<(std::ostream& os, const mat4 &mat) 
-{ 
+std::ostream& operator<<(std::ostream& os, const mat4 &mat)
+{
     for (unsigned col = 0; col < 4; col++)
     {
         os << "| ";

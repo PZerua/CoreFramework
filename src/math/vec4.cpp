@@ -1,9 +1,7 @@
 /**
-* (c) 2017 Pablo Luis García. All rights reserved.
+* (c) 2017 Pablo Luis Garcï¿½a. All rights reserved.
 * Released under MIT license. Read LICENSE for more details.
 */
-
-#pragma once
 
 #include "vec4.h"
 

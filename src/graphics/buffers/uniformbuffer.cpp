@@ -6,6 +6,7 @@
 #include "uniformbuffer.h"
 
 #include <iostream>
+#include <cstring>
 
 namespace gfx
 {

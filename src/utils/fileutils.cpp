@@ -1,9 +1,7 @@
 /**
-* (c) 2017 Pablo Luis García. All rights reserved.
+* (c) 2017 Pablo Luis Garcï¿½a. All rights reserved.
 * Released under MIT license. Read LICENSE for more details.
 */
-
-#pragma once
 
 #include "fileutils.h"
 
@@ -65,14 +63,19 @@ bool getTextureSize(const char *spritePath, math::vec2 &size)
     }
 
     unsigned width, height;
-    
+
     fileStream.seekg(16);
     fileStream.read(reinterpret_cast<char*>(&width), 4);
     fileStream.read(reinterpret_cast<char*>(&height), 4);
 
     // They are in be
+#if _MSC_VER && !__INTEL_COMPILER
     size.x = (float)_byteswap_ulong(width);
     size.y = (float)_byteswap_ulong(height);
+#else
+    size.x = (float)__builtin_bswap32(width);
+    size.y = (float)__builtin_bswap32(height);
+#endif
 
     return true;
 }

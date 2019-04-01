@@ -1,5 +1,5 @@
 /**
-* (c) 2017 Pablo Luis García. All rights reserved.
+* (c) 2017 Pablo Luis Garcï¿½a. All rights reserved.
 * Released under MIT license. Read LICENSE for more details.
 */
 
@@ -24,7 +24,7 @@ struct vec4
     float dot(const vec4 &vec) const { return (x * vec.x + y * vec.y + z * vec.z + w * vec.w); }
     inline float magnitude() const { return std::sqrt(x*x + y*y + z*z + w*w); }
 
-    bool vec4::operator<(const vec4 &vec) const;
+    bool operator<(const vec4 &vec) const;
 };
 
 } // namespace math
